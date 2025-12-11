@@ -6,20 +6,24 @@
     <title>Опросник по переговорам</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body { 
-            color: var(--tg-theme-text-color); 
-            background: var(--tg-theme-bg-color); 
-            padding: 20px; 
+        body {
+            color: var(--tg-theme-text-color);
+            background: linear-gradient(135deg, #0a192f 0%, #020817 100%);
+            padding: 20px;
             font-family: Arial, sans-serif;
             max-width: 600px;
             margin: 0 auto;
+            min-height: 100vh;
         }
         
         .container {
-            background: var(--tg-theme-secondary-bg-color);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         
         .step {
@@ -41,7 +45,7 @@
         
         .progress {
             height: 100%;
-            background: var(--tg-theme-button-color);
+            background: linear-gradient(90deg, #FFB84D 0%, #FF9500 100%);
             border-radius: 5px;
             transition: width 0.3s ease;
         }
@@ -50,7 +54,8 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 15px;
-            color: var(--tg-theme-text-color);
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .input-group {
@@ -60,17 +65,25 @@
         .input-group label {
             display: block;
             margin-bottom: 5px;
-            color: var(--tg-theme-hint-color);
+            color: #a0aec0;
+            font-weight: 500;
         }
         
         input, textarea, select {
             width: 100%;
             padding: 10px;
-            border: 1px solid var(--tg-theme-hint-color);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 5px;
-            background: var(--tg-theme-bg-color);
-            color: var(--tg-theme-text-color);
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
             box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
         }
         
         textarea {
@@ -102,39 +115,67 @@
         }
         
         button {
-            background: var(--tg-theme-button-color);
-            color: var(--tg-theme-button-text-color);
+            background: linear-gradient(135deg, #FFB84D 0%, #FF9500 100%);
+            color: #ffffff;
             border: none;
             padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 184, 77, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 184, 77, 0.4);
         }
         
         button:disabled {
-            background: var(--tg-theme-hint-color);
+            background: rgba(255, 255, 255, 0.1);
             cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
         
         .secondary-btn {
-            background: var(--tg-theme-secondary-bg-color);
-            color: var(--tg-theme-text-color);
-            border: 1px solid var(--tg-theme-hint-color);
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
         }
         
         .step-indicator {
             text-align: center;
             margin-bottom: 10px;
-            color: var(--tg-theme-hint-color);
+            color: #a0aec0;
+            font-weight: 500;
         }
         
         .submit-btn {
             width: 100%;
-            background: var(--tg-theme-button-color);
-            color: var(--tg-theme-button-text-color);
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: #ffffff;
             padding: 15px;
             font-size: 16px;
             margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+        }
+        
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
