@@ -207,30 +207,42 @@
         <!-- Шаг 5: Что я чувствовал -->
         <div class="step" id="step5">
             <div class="question-title">Что я чувствовал до, в процессе и по окончании переговоров?</div>
-            <table class="table-input">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>До</th>
-                        <th>В процессе</th>
-                        <th>По окончании</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Интенсивность</td>
-                        <td><input type="number" id="intensityBefore" min="1" max="10" placeholder="1-10"></td>
-                        <td><input type="number" id="intensityDuring" min="1" max="10" placeholder="1-10"></td>
-                        <td><input type="number" id="intensityAfter" min="1" max="10" placeholder="1-10"></td>
-                    </tr>
-                    <tr>
-                        <td>Чувство</td>
-                        <td><input type="text" id="feelingBefore" placeholder="Какое чувство?"></td>
-                        <td><input type="text" id="feelingDuring" placeholder="Какое чувство?"></td>
-                        <td><input type="text" id="feelingAfter" placeholder="Какое чувство?"></td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div class="input-group">
+                <label>До</label>
+                <div class="input-group">
+                    <label for="intensityBefore">Интенсивность</label>
+                    <input type="number" id="intensityBefore" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="input-group">
+                    <label for="feelingBefore">Чувство</label>
+                    <input type="text" id="feelingBefore" placeholder="Какое чувство?">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>В процессе</label>
+                <div class="input-group">
+                    <label for="intensityDuring">Интенсивность</label>
+                    <input type="number" id="intensityDuring" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="input-group">
+                    <label for="feelingDuring">Чувство</label>
+                    <input type="text" id="feelingDuring" placeholder="Какое чувство?">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>По окончании</label>
+                <div class="input-group">
+                    <label for="intensityAfter">Интенсивность</label>
+                    <input type="number" id="intensityAfter" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="input-group">
+                    <label for="feelingAfter">Чувство</label>
+                    <input type="text" id="feelingAfter" placeholder="Какое чувство?">
+                </div>
+            </div>
         </div>
         
         <!-- Шаг 6: Что я сделал не так и что это было -->
