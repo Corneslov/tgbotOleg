@@ -310,6 +310,116 @@
             </div>
         </div>
         
+        <!-- Шаг 7: Какая у меня задача? -->
+        <div class="step" id="step7">
+            <div class="question-title">Какая у меня задача? В чем смысл ее решения?</div>
+            <div class="input-group">
+                <label for="taskDescription">Опишите вашу задачу:</label>
+                <textarea id="taskDescription" placeholder="Какая у меня задача? В чем смысл ее решения..."></textarea>
+            </div>
+        </div>
+        
+        <!-- Шаг 8: Кто я? -->
+        <div class="step" id="step8">
+            <div class="question-title">Кто я?</div>
+            <div class="input-group">
+                <label for="whoAmI">Опишите, кто вы в этой ситуации:</label>
+                <textarea id="whoAmI" placeholder="Кто я в этой ситуации..."></textarea>
+            </div>
+        </div>
+        
+        <!-- Шаг 9: Что я думаю? -->
+        <div class="step" id="step9">
+            <div class="question-title">Что я думаю?</div>
+            <div class="input-group">
+                <label for="thinkAboutGoalAchievability">Что я думаю о достижимости цели?</label>
+                <textarea id="thinkAboutGoalAchievability" placeholder="Что я думаю о достижимости цели..."></textarea>
+            </div>
+            <div class="input-group">
+                <label for="thinkAboutSelfNew">Что я думаю о себе?</label>
+                <textarea id="thinkAboutSelfNew" placeholder="Что я думаю о себе..."></textarea>
+            </div>
+            <div class="input-group">
+                <label for="thinkAboutOpponentNew">Что я думаю об оппоненте?</label>
+                <textarea id="thinkAboutOpponentNew" placeholder="Что я думаю об оппоненте..."></textarea>
+            </div>
+            <div class="input-group">
+                <label for="whatIAimForNew">К чему я стремлюсь?</label>
+                <textarea id="whatIAimForNew" placeholder="К чему я стремлюсь..."></textarea>
+            </div>
+            <div class="input-group">
+                <label for="whatMotivatesMe">Что меня мотивирует и двигает?</label>
+                <textarea id="whatMotivatesMe" placeholder="Что меня мотивирует и двигает..."></textarea>
+            </div>
+            <div class="input-group">
+                <label for="whatIsPossibleDesirable">Что для меня возможно и желанно?</label>
+                <textarea id="whatIsPossibleDesirable" placeholder="Что для меня возможно и желанно..."></textarea>
+            </div>
+        </div>
+        
+        <!-- Шаг 10: Что я чувствовал (Решение) -->
+        <div class="step" id="step10">
+            <div class="question-title">Что я чувствовал до, в процессе и по окончанию переговоров?</div>
+            
+            <div class="input-group">
+                <label>До</label>
+                <div class="input-group">
+                    <label for="intensityBeforeSolution">Интенсивность</label>
+                    <input type="number" id="intensityBeforeSolution" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="input-group">
+                    <label for="feelingBeforeSolution">Чувство</label>
+                    <input type="text" id="feelingBeforeSolution" placeholder="Какое чувство?">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>В процессе</label>
+                <div class="input-group">
+                    <label for="intensityDuringSolution">Интенсивность</label>
+                    <input type="number" id="intensityDuringSolution" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="input-group">
+                    <label for="feelingDuringSolution">Чувство</label>
+                    <input type="text" id="feelingDuringSolution" placeholder="Какое чувство?">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>По окончании</label>
+                <div class="input-group">
+                    <label for="intensityAfterSolution">Интенсивность</label>
+                    <input type="number" id="intensityAfterSolution" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="input-group">
+                    <label for="feelingAfterSolution">Чувство</label>
+                    <input type="text" id="feelingAfterSolution" placeholder="Какое чувство?">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Шаг 11: Что мне стоит чувствовать -->
+        <div class="step" id="step11">
+            <div class="question-title">Что мне стоит чувствовать и какой настрой сохранять до, в процессе и по окончанию переговоров?</div>
+            <div class="input-group">
+                <label for="shouldFeelToSelf">По отношению к себе?</label>
+                <textarea id="shouldFeelToSelf" placeholder="Что мне стоит чувствовать по отношению к себе..."></textarea>
+            </div>
+            <div class="input-group">
+                <label for="shouldFeelToOpponent">По отношению к оппоненту?</label>
+                <textarea id="shouldFeelToOpponent" placeholder="Что мне стоит чувствовать по отношению к оппоненту..."></textarea>
+            </div>
+        </div>
+        
+        <!-- Шаг 12: Что это теперь будет? -->
+        <div class="step" id="step12">
+            <div class="question-title">Что это теперь будет?</div>
+            <div class="input-group">
+                <label for="whatWillItBeNow">Опишите, что это теперь будет:</label>
+                <textarea id="whatWillItBeNow" placeholder="Что это теперь будет..."></textarea>
+            </div>
+        </div>
+        
         <div class="button-group">
             <button id="prevBtn" class="secondary-btn" onclick="changeStep(-1)" disabled>Назад</button>
             <button id="nextBtn" onclick="changeStep(1)">Далее</button>
@@ -324,7 +434,7 @@
         tg.expand();
         
         let currentStep = 1;
-        const totalSteps = 6;
+        const totalSteps = 12;
         
         // Обновляем прогресс-бар и индикатор шага
         function updateProgress() {
@@ -396,7 +506,38 @@
                     toSelf: document.getElementById('wrongToSelf').value,
                     toOpponent: document.getElementById('wrongToOpponent').value
                 },
-                whatWasIt: document.getElementById('whatWasIt').value
+                whatWasIt: document.getElementById('whatWasIt').value,
+                
+                // Вторая часть - Решение
+                taskDescription: document.getElementById('taskDescription').value,
+                whoAmI: document.getElementById('whoAmI').value,
+                solutionThoughts: {
+                    aboutGoalAchievability: document.getElementById('thinkAboutGoalAchievability').value,
+                    aboutSelf: document.getElementById('thinkAboutSelfNew').value,
+                    aboutOpponent: document.getElementById('thinkAboutOpponentNew').value,
+                    aimFor: document.getElementById('whatIAimForNew').value,
+                    motivates: document.getElementById('whatMotivatesMe').value,
+                    possibleDesirable: document.getElementById('whatIsPossibleDesirable').value
+                },
+                solutionFeelings: {
+                    before: {
+                        intensity: document.getElementById('intensityBeforeSolution').value,
+                        feeling: document.getElementById('feelingBeforeSolution').value
+                    },
+                    during: {
+                        intensity: document.getElementById('intensityDuringSolution').value,
+                        feeling: document.getElementById('feelingDuringSolution').value
+                    },
+                    after: {
+                        intensity: document.getElementById('intensityAfterSolution').value,
+                        feeling: document.getElementById('feelingAfterSolution').value
+                    }
+                },
+                shouldFeel: {
+                    toSelf: document.getElementById('shouldFeelToSelf').value,
+                    toOpponent: document.getElementById('shouldFeelToOpponent').value
+                },
+                whatWillItBeNow: document.getElementById('whatWillItBeNow').value
             };
         }
         
