@@ -25,21 +25,12 @@
             margin-bottom: 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
-        .step { display: none; }
-        .step.active { display: block; }
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: var(--tg-theme-hint-color);
-            border-radius: 5px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        .progress {
-            height: 100%;
-            background: linear-gradient(90deg, #2D6A4F 0%, #1B5E3F 100%);
-            border-radius: 5px;
-            transition: width 0.3s ease;
+        h1 {
+            color: #000000;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
+            font-size: 28px;
         }
         .question-title {
             font-size: 22px;
@@ -56,7 +47,7 @@
             font-weight: 500;
             font-size: 16px;
         }
-        input, textarea, select {
+        textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid rgba(0, 0, 0, 0.3);
@@ -66,436 +57,52 @@
             box-sizing: border-box;
             transition: all 0.3s ease;
             font-size: 16px;
+            min-height: 150px;
+            resize: vertical;
         }
-        input:focus, textarea:focus, select:focus {
+        textarea:focus {
             outline: none;
             border-color: #4299e1;
             box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
         }
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-            font-size: 16px;
-        }
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        button {
-            background: linear-gradient(135deg, #2D6A4F 0%, #1B5E3F 100%);
-            color: #ffffff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
-            font-size: 16px;
-        }
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(45, 106, 79, 0.4);
-        }
-        button:disabled {
-            background: rgba(255, 255, 255, 0.1);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        .secondary-btn {
-            background: rgba(255, 255, 255, 0.3);
-            color: #000000;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-        }
-        .secondary-btn:hover {
-            background: rgba(255, 255, 255, 0.4);
-            border-color: rgba(0, 0, 0, 0.3);
-        }
-        .step-indicator {
-            text-align: center;
-            margin-bottom: 15px;
-            color: #000000;
-            font-weight: 500;
-            font-size: 18px;
-        }
-        h1 {
-            color: #000000;
-            text-align: center;
-            margin-bottom: 30px;
-            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
-            font-size: 28px;
+        .hint {
+            font-size: 14px;
+            color: #222;
+            opacity: 0.9;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
     <h1>Опросник по переговорам</h1>
 
-    <div class="progress-bar">
-        <div class="progress" id="progress"></div>
-    </div>
-
-    <div class="step-indicator" id="stepIndicator">Шаг 1 из 12</div>
-
     <div class="container">
-        <!-- Шаг 1: Проблема -->
-        <div class="step active" id="step1">
-            <div class="question-title">Проблема</div>
-            <div class="input-group">
-                <label for="problem">Опишите проблему:</label>
-                <textarea id="problem" placeholder="Опишите проблему, с которой столкнулись..."></textarea>
+        <div class="question-title">Опишите свои переговоры</div>
+        <div class="input-group">
+            <div class="hint">
+                Кратко опишите ситуацию, вашу цель, с кем вели переговоры и чем всё закончилось.
             </div>
-        </div>
-
-        <!-- Шаг 2: Истинная цель -->
-        <div class="step" id="step2">
-            <div class="question-title">Какова была истинная цель?</div>
-            <div class="input-group">
-                <label for="trueGoal">Опишите истинную цель:</label>
-                <textarea id="trueGoal" placeholder="Какова была истинная цель..."></textarea>
-            </div>
-        </div>
-
-        <!-- Шаг 3: Кто это был -->
-        <div class="step" id="step3">
-            <div class="question-title">Кто это был?</div>
-            <div class="input-group">
-                <label for="whoWasIt">Опишите, кто был вашим оппонентом:</label>
-                <textarea id="whoWasIt" placeholder="Опишите, кто был вашим оппонентом..."></textarea>
-            </div>
-        </div>
-
-        <!-- Шаг 4: Что я думал -->
-        <div class="step" id="step4">
-            <div class="question-title">Что я думал?</div>
-            <div class="input-group">
-                <label for="thoughtAboutGoal">Что я думал о цели?</label>
-                <textarea id="thoughtAboutGoal" placeholder="Что я думал о цели..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="thoughtAboutSelf">Что я думал о себе?</label>
-                <textarea id="thoughtAboutSelf" placeholder="Что я думал о себе..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="thoughtAboutOpponent">Что я думал об оппоненте?</label>
-                <textarea id="thoughtAboutOpponent" placeholder="Что я думал об оппоненте..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="whatIAimedFor">К чему я стремился?</label>
-                <textarea id="whatIAimedFor" placeholder="К чему я стремился..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="whatIFeared">Чего я боялся?</label>
-                <textarea id="whatIFeared" placeholder="Чего я боялся..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="whatWasImpossible">Что для меня было невозможно?</label>
-                <textarea id="whatWasImpossible" placeholder="Что для меня было невозможно..."></textarea>
-            </div>
-        </div>
-
-        <!-- Шаг 5: Что я чувствовал -->
-        <div class="step" id="step5">
-            <div class="question-title">Что я чувствовал до, в процессе и по окончании переговоров?</div>
-
-            <div class="input-group">
-                <label>До</label>
-                <div class="input-group">
-                    <label for="intensityBefore">Интенсивность</label>
-                    <input type="number" id="intensityBefore" min="1" max="10" placeholder="1-10">
-                </div>
-                <div class="input-group">
-                    <label for="feelingBefore">Чувство</label>
-                    <input type="text" id="feelingBefore" placeholder="Какое чувство?">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label>В процессе</label>
-                <div class="input-group">
-                    <label for="intensityDuring">Интенсивность</label>
-                    <input type="number" id="intensityDuring" min="1" max="10" placeholder="1-10">
-                </div>
-                <div class="input-group">
-                    <label for="feelingDuring">Чувство</label>
-                    <input type="text" id="feelingDuring" placeholder="Какое чувство?">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label>По окончании</label>
-                <div class="input-group">
-                    <label for="intensityAfter">Интенсивность</label>
-                    <input type="number" id="intensityAfter" min="1" max="10" placeholder="1-10">
-                </div>
-                <div class="input-group">
-                    <label for="feelingAfter">Чувство</label>
-                    <input type="text" id="feelingAfter" placeholder="Какое чувство?">
-                </div>
-            </div>
-        </div>
-
-        <!-- Шаг 6: Что я сделал не так и что это было -->
-        <div class="step" id="step6">
-            <div class="question-title">Что я сделал не так, как хотел или следовало?</div>
-            <div class="input-group">
-                <label for="wrongToSelf">По отношению к себе?</label>
-                <textarea id="wrongToSelf" placeholder="Что я сделал не так по отношению к себе..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="wrongToOpponent">По отношению к оппоненту?</label>
-                <textarea id="wrongToOpponent" placeholder="Что я сделал не так по отношению к оппоненту..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="whatWasIt">Что это вообще было?</label>
-                <textarea id="whatWasIt" placeholder="Что это вообще было..."></textarea>
-            </div>
-        </div>
-
-        <!-- Шаг 7: Какая у меня задача? -->
-        <div class="step" id="step7">
-            <div class="question-title">Какая у меня задача? В чем смысл ее решения?</div>
-            <div class="input-group">
-                <label for="taskDescription">Опишите вашу задачу:</label>
-                <textarea id="taskDescription" placeholder="Какая у меня задача? В чем смысл ее решения..."></textarea>
-            </div>
-        </div>
-
-        <!-- Шаг 8: Кто я? -->
-        <div class="step" id="step8">
-            <div class="question-title">Кто я?</div>
-            <div class="input-group">
-                <label for="whoAmI">Опишите, кто вы в этой ситуации:</label>
-                <textarea id="whoAmI" placeholder="Кто я в этой ситуации..."></textarea>
-            </div>
-        </div>
-
-        <!-- Шаг 9: Что я думаю? -->
-        <div class="step" id="step9">
-            <div class="question-title">Что я думаю?</div>
-            <div class="input-group">
-                <label for="thinkAboutGoalAchievability">Что я думаю о достижимости цели?</label>
-                <textarea id="thinkAboutGoalAchievability" placeholder="Что я думаю о достижимости цели..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="thinkAboutSelfNew">Что я думаю о себе?</label>
-                <textarea id="thinkAboutSelfNew" placeholder="Что я думаю о себе..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="thinkAboutOpponentNew">Что я думаю об оппоненте?</label>
-                <textarea id="thinkAboutOpponentNew" placeholder="Что я думаю об оппоненте..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="whatIAimForNew">К чему я стремлюсь?</label>
-                <textarea id="whatIAimForNew" placeholder="К чему я стремлюсь..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="whatMotivatesMe">Что меня мотивирует и двигает?</label>
-                <textarea id="whatMotivatesMe" placeholder="Что меня мотивирует и двигает..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="whatIsPossibleDesirable">Что для меня возможно и желанно?</label>
-                <textarea id="whatIsPossibleDesirable" placeholder="Что для меня возможно и желанно..."></textarea>
-            </div>
-        </div>
-
-        <!-- Шаг 10: Что я чувствовал (Решение) -->
-        <div class="step" id="step10">
-            <div class="question-title">Что я чувствовал до, в процессе и по окончанию переговоров?</div>
-
-            <div class="input-group">
-                <label>До</label>
-                <div class="input-group">
-                    <label for="intensityBeforeSolution">Интенсивность</label>
-                    <input type="number" id="intensityBeforeSolution" min="1" max="10" placeholder="1-10">
-                </div>
-                <div class="input-group">
-                    <label for="feelingBeforeSolution">Чувство</label>
-                    <input type="text" id="feelingBeforeSolution" placeholder="Какое чувство?">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label>В процессе</label>
-                <div class="input-group">
-                    <label for="intensityDuringSolution">Интенсивность</label>
-                    <input type="number" id="intensityDuringSolution" min="1" max="10" placeholder="1-10">
-                </div>
-                <div class="input-group">
-                    <label for="feelingDuringSolution">Чувство</label>
-                    <input type="text" id="feelingDuringSolution" placeholder="Какое чувство?">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label>По окончании</label>
-                <div class="input-group">
-                    <label for="intensityAfterSolution">Интенсивность</label>
-                    <input type="number" id="intensityAfterSolution" min="1" max="10" placeholder="1-10">
-                </div>
-                <div class="input-group">
-                    <label for="feelingAfterSolution">Чувство</label>
-                    <input type="text" id="feelingAfterSolution" placeholder="Какое чувство?">
-                </div>
-            </div>
-        </div>
-
-        <!-- Шаг 11: Что мне стоит чувствовать -->
-        <div class="step" id="step11">
-            <div class="question-title">Что мне стоит чувствовать и какой настрой сохранять до, в процессе и по окончанию переговоров?</div>
-            <div class="input-group">
-                <label for="shouldFeelToSelf">По отношению к себе?</label>
-                <textarea id="shouldFeelToSelf" placeholder="Что мне стоит чувствовать по отношению к себе..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="shouldFeelToOpponent">По отношению к оппоненту?</label>
-                <textarea id="shouldFeelToOpponent" placeholder="Что мне стоит чувствовать по отношению к оппоненту..."></textarea>
-            </div>
-        </div>
-
-        <!-- Шаг 12: Что это теперь будет? -->
-        <div class="step" id="step12">
-            <div class="question-title">Что это теперь будет?</div>
-            <div class="input-group">
-                <label for="whatWillItBeNow">Опишите, что это теперь будет:</label>
-                <textarea id="whatWillItBeNow" placeholder="Что это теперь будет..."></textarea>
-            </div>
-        </div>
-
-        <div class="button-group">
-            <button id="prevBtn" class="secondary-btn" onclick="changeStep(-1)" disabled>Назад</button>
-            <button id="nextBtn" onclick="changeStep(1)">Далее</button>
+            <label for="negotiationText">Ваш рассказ:</label>
+            <textarea id="negotiationText"
+                      placeholder="Опишите переговоры в свободной форме..."></textarea>
         </div>
     </div>
 
     <script>
         let tg = window.Telegram?.WebApp;
         if (!tg) {
-            document.body.innerHTML = "<div style='padding:20px;text-align:center;'><h2>Откройте через Telegram</h2></div>";
+            document.body.innerHTML =
+                "<div style='padding:20px;text-align:center;'><h2>Откройте через Telegram</h2></div>";
         } else {
             tg.ready();
             tg.expand();
-            console.log("✅ Telegram WebApp инициализирован:", tg);
-            console.log("👤 Данные пользователя:", tg.initDataUnsafe);
-            
-            // Настраиваем MainButton для отправки данных
-            tg.MainButton.setText("ОТПРАВЬ РЕЗУЛЬТАТЫ");
+
+            tg.MainButton.setText("ОТПРАВИТЬ");
             tg.MainButton.color = "#48bb78";
             tg.MainButton.textColor = "#ffffff";
-            tg.MainButton.hide(); // Скрываем до последнего шага
-            
-            // Обработчик нажатия на MainButton
+            tg.MainButton.show();
+
             tg.MainButton.onClick(submitData);
-            
-            console.log("✅ MainButton настроен и готов");
-        }
-
-        let currentStep = 1;
-        const totalSteps = 12;
-
-        function updateProgress() {
-            const progress = document.getElementById('progress');
-            const stepIndicator = document.getElementById('stepIndicator');
-            const progressPercent = (currentStep / totalSteps) * 100;
-
-            progress.style.width = progressPercent + '%';
-            stepIndicator.textContent = `Шаг ${currentStep} из ${totalSteps}`;
-
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-
-            prevBtn.disabled = currentStep === 1;
-
-            // Управляем MainButton на последнем шаге
-            if (currentStep === totalSteps) {
-                nextBtn.style.display = 'none';
-                if (tg && tg.MainButton) {
-                    tg.MainButton.show();
-                    console.log("✅ MainButton показан (последний шаг)");
-                }
-            } else {
-                nextBtn.style.display = 'block';
-                if (tg && tg.MainButton) {
-                    tg.MainButton.hide();
-                }
-            }
-        }
-
-        function changeStep(direction) {
-            const currentStepElement = document.getElementById(`step${currentStep}`);
-            currentStepElement.classList.remove('active');
-
-            currentStep += direction;
-
-            const newStepElement = document.getElementById(`step${currentStep}`);
-            newStepElement.classList.add('active');
-
-            updateProgress();
-        }
-
-        function collectData() {
-            return {
-                problem: document.getElementById('problem').value,
-                trueGoal: document.getElementById('trueGoal').value,
-                whoWasIt: document.getElementById('whoWasIt').value,
-                thoughts: {
-                    aboutGoal: document.getElementById('thoughtAboutGoal').value,
-                    aboutSelf: document.getElementById('thoughtAboutSelf').value,
-                    aboutOpponent: document.getElementById('thoughtAboutOpponent').value,
-                    aimedFor: document.getElementById('whatIAimedFor').value,
-                    feared: document.getElementById('whatIFeared').value,
-                    impossible: document.getElementById('whatWasImpossible').value
-                },
-                feelings: {
-                    before: {
-                        intensity: document.getElementById('intensityBefore').value,
-                        feeling: document.getElementById('feelingBefore').value
-                    },
-                    during: {
-                        intensity: document.getElementById('intensityDuring').value,
-                        feeling: document.getElementById('feelingDuring').value
-                    },
-                    after: {
-                        intensity: document.getElementById('intensityAfter').value,
-                        feeling: document.getElementById('feelingAfter').value
-                    }
-                },
-                mistakes: {
-                    toSelf: document.getElementById('wrongToSelf').value,
-                    toOpponent: document.getElementById('wrongToOpponent').value
-                },
-                whatWasIt: document.getElementById('whatWasIt').value,
-                taskDescription: document.getElementById('taskDescription').value,
-                whoAmI: document.getElementById('whoAmI').value,
-                solutionThoughts: {
-                    aboutGoalAchievability: document.getElementById('thinkAboutGoalAchievability').value,
-                    aboutSelf: document.getElementById('thinkAboutSelfNew').value,
-                    aboutOpponent: document.getElementById('thinkAboutOpponentNew').value,
-                    aimFor: document.getElementById('whatIAimForNew').value,
-                    motivates: document.getElementById('whatMotivatesMe').value,
-                    possibleDesirable: document.getElementById('whatIsPossibleDesirable').value
-                },
-                solutionFeelings: {
-                    before: {
-                        intensity: document.getElementById('intensityBeforeSolution').value,
-                        feeling: document.getElementById('feelingBeforeSolution').value
-                    },
-                    during: {
-                        intensity: document.getElementById('intensityDuringSolution').value,
-                        feeling: document.getElementById('feelingDuringSolution').value
-                    },
-                    after: {
-                        intensity: document.getElementById('intensityAfterSolution').value,
-                        feeling: document.getElementById('feelingAfterSolution').value
-                    }
-                },
-                shouldFeel: {
-                    toSelf: document.getElementById('shouldFeelToSelf').value,
-                    toOpponent: document.getElementById('shouldFeelToOpponent').value
-                },
-                whatWillItBeNow: document.getElementById('whatWillItBeNow').value
-            };
         }
 
         function getUserData() {
@@ -505,97 +112,73 @@
                     return {
                         telegram_id: user.id,
                         first_name: user.first_name,
-                        last_name: user.last_name || '',
-                        username: user.username || ''
+                        last_name: user.last_name || "",
+                        username: user.username || ""
                     };
                 }
                 return null;
             } catch (error) {
-                console.error("❌ Ошибка при получении данных пользователя:", error);
+                console.error("Ошибка при получении данных пользователя:", error);
                 return null;
             }
         }
 
         function submitData() {
-            console.log("🔵 MainButton нажат - начинаем отправку");
-            
-            // Показываем прогресс на кнопке
+            if (!tg) return;
+
             tg.MainButton.showProgress();
             tg.MainButton.disable();
 
-            const data = collectData();
-            console.log("📦 Собранные данные опроса:", data);
+            const text = document.getElementById("negotiationText").value.trim();
 
-            // Валидация обязательных полей
-            const requiredFields = {
-                'problem': 'Проблема',
-                'trueGoal': 'Истинная цель',
-                'whoWasIt': 'Кто это был'
-            };
-
-            for (const [field, label] of Object.entries(requiredFields)) {
-                if (!data[field] || data[field].trim() === '') {
-                    console.error(`❌ Поле "${label}" не заполнено`);
-                    tg.MainButton.hideProgress();
-                    tg.MainButton.enable();
-                    tg.showAlert(`Пожалуйста, заполните поле "${label}" перед отправкой.`);
-                    return;
-                }
-            }
-
-            console.log("✅ Валидация пройдена успешно");
-
-            const userData = getUserData();
-            if (!userData) {
-                console.error("❌ Не удалось получить данные пользователя");
+            if (!text) {
                 tg.MainButton.hideProgress();
                 tg.MainButton.enable();
-                tg.showAlert("Ошибка: не удалось получить данные пользователя. Пожалуйста, перезапустите приложение.");
+                tg.showAlert("Пожалуйста, опишите переговоры перед отправкой.");
                 return;
             }
 
-            console.log("👤 Данные пользователя:", userData);
-
-            let json = JSON.stringify(data);
-            console.log("📊 Размер JSON до оптимизации:", json.length, "символов");
-            
-            // Telegram WebApp поддерживает до 4096 байт
-            if (json.length > 4000) {
-                console.warn("⚠️ Payload слишком большой, оптимизируем данные...");
-                // Обрезаем длинные текстовые поля
-                if (payload.survey.data.problem) {
-                    payload.survey.data.problem = payload.survey.data.problem.substring(0, 300);
-                }
-                if (payload.survey.data.trueGoal) {
-                    payload.survey.data.trueGoal = payload.survey.data.trueGoal.substring(0, 300);
-                }
-                json = JSON.stringify(payload);
-                console.log("📊 Размер JSON после оптимизации:", json.length, "символов");
+            const userData = getUserData();
+            if (!userData) {
+                tg.MainButton.hideProgress();
+                tg.MainButton.enable();
+                tg.showAlert(
+                    "Ошибка: не удалось получить данные пользователя. Пожалуйста, перезапустите приложение."
+                );
+                return;
             }
 
-            console.log("🚀 Отправка данных в бот через tg.sendData()");
-            console.log("📤 Финальный payload:", payload);
-            
+            const payload = {
+                type: "negotiation_survey_simple",
+                user: userData,
+                survey: {
+                    text
+                },
+                ts: Date.now()
+            };
+
+            let json = JSON.stringify(payload);
+            console.log("Размер JSON:", json.length, "символов");
+
+            // На всякий случай ограничим размер для tg.sendData (до 4096 байт) [web:7][web:15]
+            if (json.length > 4000) {
+                payload.survey.text = payload.survey.text.substring(0, 3500);
+                json = JSON.stringify(payload);
+                console.log("Размер JSON после обрезки:", json.length, "символов");
+            }
+
             try {
                 tg.sendData(json);
-                console.log("✅ tg.sendData() вызван успешно! Данные отправлены в бот.");
-                
-                // Показываем подтверждение и закрываем WebApp
-                tg.showAlert("✅ Спасибо! Ваш опрос успешно отправлен.", () => {
-                    console.log("🔒 Закрываем WebApp");
+                tg.showAlert("✅ Спасибо! Ваш ответ отправлен.", () => {
                     tg.close();
                 });
             } catch (error) {
-                console.error("❌ Критическая ошибка при отправке:", error);
+                console.error("Ошибка при отправке:", error);
                 tg.MainButton.hideProgress();
                 tg.MainButton.enable();
                 tg.showAlert("Ошибка при отправке данных. Попробуйте еще раз.");
             }
         }
-
-        // Инициализация при загрузке
-        updateProgress();
-        console.log("✅ Инициализация завершена. Готов к работе!");
     </script>
 </body>
 </html>
