@@ -556,17 +556,7 @@
 
             console.log("👤 Данные пользователя:", userData);
 
-            const payload = {
-                user: userData,
-                survey: {
-                    id: 'survey_' + Date.now(),
-                    created_at: Date.now(),
-                    total_steps: totalSteps,
-                    data: data
-                }
-            };
-
-            let json = JSON.stringify(payload);
+            let json = JSON.stringify(data);
             console.log("📊 Размер JSON до оптимизации:", json.length, "символов");
             
             // Telegram WebApp поддерживает до 4096 байт
